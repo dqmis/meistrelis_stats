@@ -65,13 +65,6 @@ def get_user_services_stats2():
     return base64.b64encode(tmpfile.getvalue()).decode('utf-8')
     
 
-IMG1 = get_user_services_stats()
-IMG2 = get_user_services_stats1()
-IMG3 = get_user_services_stats2()
-IMG4 = get_user_services_stats3()
-USERS_COUNT = get_unique_users_count()
-
-html_string = '<!doctype html><html lang="en"><head><meta charset="utf-8"><style>' + '.title{font-size:2rem}.title-class{text-align:center;padding:3rem}.img{max-width:100%;max-height:100%}.imgs-row{padding:2rem}.usersText{text-align:center}.usersCount{font-size:4rem;color:blue}.usersText{font-size:1.5rem}</style>' + f'<meta name="viewport" content="width=device-width, initial-scale=1"><link href="./index.css", rel="stylesheet" /><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"><title>Meistrelis Stats</title></head><body><div class="container"><div class="row"><div class="col title-class"><h1 class="title">MEISTRELIS STATS</h1></div></div></div><div class="container"><div class="row imgs-row"><div class="col"> <img src="data:image/png;base64,{IMG1}" class="img"/></div><div class="col"> <img src="data:image/png;base64,{IMG2}" class="img"/></div></div><div class="row imgs-row"><div class="col"> <img src="data:image/png;base64,{IMG3}" class="img"/></div><div class="col"> <img src="data:image/png;base64,{IMG4}" class="img"/></div></div><div class="row imgs-row"><div class="col usersText"><h1 class="usersCount">{USERS_COUNT}</h1><h1 class="usersText"> Unique Users</h1></div><div class="col"></div></div></div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> </body></html>'
 
 app = Flask(__name__)
 
@@ -84,6 +77,13 @@ def health():
 
 @app.route("/stats", methods=["GET"])
 def predict():
+    IMG1 = get_user_services_stats()
+    IMG2 = get_user_services_stats1()
+    IMG3 = get_user_services_stats2()
+    IMG4 = get_user_services_stats3()
+    USERS_COUNT = get_unique_users_count()
+
+    html_string = '<!doctype html><html lang="en"><head><meta charset="utf-8"><style>' + '.title{font-size:2rem}.title-class{text-align:center;padding:3rem}.img{max-width:100%;max-height:100%}.imgs-row{padding:2rem}.usersText{text-align:center}.usersCount{font-size:4rem;color:blue}.usersText{font-size:1.5rem}</style>' + f'<meta name="viewport" content="width=device-width, initial-scale=1"><link href="./index.css", rel="stylesheet" /><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"><title>Meistrelis Stats</title></head><body><div class="container"><div class="row"><div class="col title-class"><h1 class="title">MEISTRELIS STATS</h1></div></div></div><div class="container"><div class="row imgs-row"><div class="col"> <img src="data:image/png;base64,{IMG1}" class="img"/></div><div class="col"> <img src="data:image/png;base64,{IMG2}" class="img"/></div></div><div class="row imgs-row"><div class="col"> <img src="data:image/png;base64,{IMG3}" class="img"/></div><div class="col"> <img src="data:image/png;base64,{IMG4}" class="img"/></div></div><div class="row imgs-row"><div class="col usersText"><h1 class="usersCount">{USERS_COUNT}</h1><h1 class="usersText"> Unique Users</h1></div><div class="col"></div></div></div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> </body></html>'
     if request.method == "GET":
         try:
            return html_string
