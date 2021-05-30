@@ -1,0 +1,30 @@
+.title {
+    font-size: 2rem;
+}
+
+.title-class {
+    text-align: center;
+    padding: 3rem;
+}
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.imgs-row {
+    padding: 2rem;
+}
+
+.usersText {
+    text-align: center;
+}
+
+.usersCount {
+    font-size: 4rem;
+    color: blue;
+}
+
+.usersText{
+    font-size: 1.5rem;
+}
