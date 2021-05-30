@@ -10,9 +10,9 @@ import os
 import json
 
 def get_unique_users_count():
-    response = requests.get("https://meistrelis.herokuapp.com/api/UserServices/GetAllServicesNoKey")
+    response = requests.get("https://meistrelis.herokuapp.com/api/Users")
     df = pd.DataFrame(json.loads(response.text))
-    return len(df["mechanicEmail"].unique())
+    return df.shape[0]
 
 def get_user_services_stats():
     tmpfile = BytesIO()
